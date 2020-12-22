@@ -1,0 +1,44 @@
+
+//- definimos el mixin con el nombre head y pagina como parametro donde le pasaremos los casos, 0 = index, 1= galeria, 2 = contactar cuando en cada plantilla de cada pagina tengamos que llamar al mixin
+mixin head(pagina)
+
+        meta(charset='utf-8')
+        //-SEO = Básico
+
+        //-creamos el mixin, cuando pagina sea igual a 0, incluira la informacion del array necesario
+        case pagina 
+        
+            //-Index 
+            when 0
+                title= seo.index[0]
+                //-llamamos al objeto seo, y le decimos la parte que queremos rellenar dependiendo de la pagina en la que estemos y la posicion del array donde esta el contenido que queremos meter en el meta
+                meta(name='description' content=seo.index[1])
+                
+                // SEO = Redes Sociales
+                meta(property='og:title' content=seo.index[0])
+                meta(property='og:description' content=seo.index[1])
+                meta(property='og:url' content=seo.url)
+                meta(property='og:image' content='')
+            //-galeria
+            when 1
+                title= seo.galeria[0]
+                meta(name='description' content=seo.galeria[1])
+                
+                // SEO = Redes Sociales
+                meta(property='og:title' content=seo.galeria[0])
+                meta(property='og:description' content=seo.galeria[1])
+                meta(property='og:url' content=seo.url)
+                meta(property='og:image' content='')
+            //-contactar
+            when 2
+                title= seo.contactar[0]
+                meta(name='description' content=seo.contactar[1])
+                
+                // SEO = Redes Sociales
+                meta(property='og:title' content=seo.contactar[0])
+                meta(property='og:description' content=seo.contactar[1])
+                meta(property='og:url' content=seo.url)
+                meta(property='og:image' content='')
+
+            default
+                title Pagina en blanco
